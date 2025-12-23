@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Ricardo Neves - Desenvolvedor Web</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- CABEÇALHO -->
+        <header class="cabecalho">
+            <img src="images/Ric.jpg" alt="Foto de Ricardo Neves" class="cabecalho__avatar">
+            <div>
+                <h1 class="cabecalho__titulo">Olá, eu sou o Ricardo Neves</h1>
+                <p class="cabecalho__descricao">Estudante de Tecnologia em Análise e Desenvolvimento de Sistemas no IFRN. Apaixonado por criar soluções web responsivas e com código limpo.</p>
+            </div>
+        </header>
+
+        <!-- NAVEGAÇÃO MOBILE -->
+        <nav class="navegacao-mobile">
+            <a href="#inicio">Início</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#skills">Skills</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#redes">Contato</a>
+        </nav>
+
+        <!-- NAVEGAÇÃO DESKTOP -->
+        <nav class="navegacao-desktop">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#redes">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo-principal">
+            <!-- Seção Projetos -->
+            <section id="projetos" class="secao">
+                <h2 class="secao__titulo">Principais Projetos</h2>
+                <div class="projetos__grid">
+                    <!-- Adicione aqui os seus Projetos -->
+                </div>
+            </section>
+
+            <!-- Seção Skills -->
+            <section id="skills" class="secao">
+                <h2 class="secao__titulo">Skills & Ferramentas</h2>
+                <div class="skills__grid">
+                    <!-- Frontend -->
+                    <div class="skill__item">
+                        <i class="fab fa-html5"></i> HTML5
+                    </div>
+                    <div class="skill__item">
+                        <i class="fab fa-css3-alt"></i> CSS3
+                    </div>
+                    <div class="skill__item">
+                        <i class="fab fa-js-square"></i> JavaScript
+                    </div>
+                    
+                    <!-- Ferramentas & Versionamento -->
+                    <div class="skill__item">
+                        <i class="fab fa-git-alt"></i> Git
+                    </div>
+                    <div class="skill__item">
+                        <i class="fab fa-github"></i>
+                        <i class="fas fa-desktop" style="font-size: 0.8em; margin-left: 2px;"></i>
+                        GitHub Desktop
+                    </div>
+                    <div class="skill__item">
+                        <i class="fas fa-code"></i> VS Code
+                    </div>
+                    
+                    <!-- Design -->
+                    <div class="skill__item">
+                        <i class="fab fa-figma"></i> Figma
+                    </div>
+                    
+                    <!-- Backend/Outras -->
+                    <div class="skill__item">
+                        <i class="fab fa-python"></i> Python
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Sobre -->
+            <section id="sobre" class="secao">
+                <h2 class="secao__titulo">Sobre Mim</h2>
+                <p>Além da programação, sou interessado em música, jogos e tecnologia. Gosto de aprender novas linguagens e frameworks, e sempre busco aplicar boas práticas de desenvolvimento em meus projetos.</p>
+            </section>
+
+            <!-- Seção Redes -->
+            <section id="redes" class="secao">
+                <h2 class="secao__titulo">Vamos Conversar?</h2>
+                <div class="redes__links">
+                    <a href="https://github.com/RicardoNevees" aria-label="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ricardo-neves-5360a0242/" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com/ricardo_neves_eng" aria-label="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <p class="rodape">© 2025 Ricardo Neves. Todos os direitos reservados.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT DEVE ESTAR AQUI, ANTES DO </body> -->
+    <script>
+    // Alternar tema claro/escuro
+    const botaoTema = document.createElement('button');
+    botaoTema.className = 'botao-tema';
+    botaoTema.setAttribute('aria-label', 'Alternar tema claro/escuro');
+    botaoTema.innerHTML = `
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    `;
+
+    // Adicionar botão ao body
+    document.body.appendChild(botaoTema);
+
+    // Verificar tema salvo ou preferência do sistema
+    const temaSalvo = localStorage.getItem('tema');
+    const prefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (temaSalvo === 'escuro' || (!temaSalvo && prefereEscuro)) {
+        document.documentElement.setAttribute('data-tema', 'escuro');
+    } else {
+        document.documentElement.setAttribute('data-tema', 'claro');
+    }
+
+    // Alternar tema ao clicar
+    botaoTema.addEventListener('click', () => {
+        const temaAtual = document.documentElement.getAttribute('data-tema');
+        const novoTema = temaAtual === 'claro' ? 'escuro' : 'claro';
+        
+        document.documentElement.setAttribute('data-tema', novoTema);
+        localStorage.setItem('tema', novoTema);
+    });
+
+    // Scroll suave para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
